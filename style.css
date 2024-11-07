@@ -218,7 +218,7 @@ pre {
     width: 70px;
     position: absolute;
     top: 450px;
-    right: 300px;
+    right: 130px;
     /* background-color: transparent; */
     border-radius: 5px;
     cursor: pointer;
@@ -1228,13 +1228,26 @@ pre {
     background-color: #f0f7ff;
 }
 
+
 /* modal 1  */
+
 .blurred {
-    filter: blur(5px); /* Adjust the blur strength here */
-    pointer-events: none; /* Prevent interaction with blurred elements */
+    filter: blur(5px);
+    /* Adjust the blur strength here */
+    pointer-events: none;
+    /* Prevent interaction with blurred elements */
 }
 
 .modal-1 {
+    /* display: none; */
+    /* position: fixed; */
+    z-index: 1;
+    /* left: 0; */
+    /* top: 0; */
+    /* width: 100%; */
+    /* height: 100%; */
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
     display: none;
     /* position: absolute; */
     position: fixed;
@@ -1243,101 +1256,100 @@ pre {
     border-radius: 12px;
     margin-top: 390px;
     margin-right: 200px;
-    /* align-items: center; */
-    /* justify-content: center; */
     padding: 24px;
     width: 90%;
     max-width: 400px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  
 }
 
-  .modal-1-header {
+.modal-1-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 20px;
-  }
+}
 
-  .modal-1-title {
+.modal-1-title {
     font-size: 18px;
     font-weight: 600;
     color: #1a1a1a;
-  }
-  .close-button-1 {
+}
+
+.close-button-1 {
     border: none;
     background: none;
     cursor: pointer;
     font-size: 20px;
     color: #666;
-  }
+}
 
-  /* modal - 2 */
-  .modal-2 {
+
+/* modal - 2 */
+
+.modal-2 {
     margin: 0px 80px;
-      display: none;
-      position: absolute;
+    display: none;
+    position: absolute;
     background: white;
     border-radius: 12px;
     padding: 24px;
     width: 90%;
     max-width: 400px;
     box-shadow: 4px 4px 4px 6px rgba(39, 59, 236, 0.1);
-  }
+}
 
-  .modal-2-header {
+.modal-2-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 20px;
-  }
+}
 
-  .modal-2-title {
+.modal-2-title {
     font-size: 18px;
     font-weight: 600;
     color: #1a1a1a;
-  }
+}
 
-
-  .form-group {
+.form-group {
     margin-bottom: 16px;
-  }
+}
 
-  .form-label {
+.form-label {
     display: block;
     font-size: 14px;
     color: #666;
     margin-bottom: 8px;
-  }
+}
 
-  .form-input {
+.form-input {
     width: 100%;
     padding: 12px;
     border: 1px solid #ddd;
     border-radius: 8px;
     font-size: 16px;
     color: #333;
-  }
+}
 
-  .form-input-group {
+.form-input-group {
     display: flex;
     gap: 12px;
-  }
+}
 
-  .form-input-group .form-input {
+.form-input-group .form-input {
     flex: 1;
-  }
+}
 
-  .form-checkbox {
+.form-checkbox {
     display: flex;
     align-items: center;
     gap: 8px;
     font-size: 14px;
     color: #4a4a4a;
     margin-bottom: 16px;
-  }
+}
 
-  .form-checkbox input {
+.form-checkbox input {
     appearance: none;
     border: 1px solid #ddd;
     border-radius: 4px;
@@ -1347,20 +1359,20 @@ pre {
     justify-content: center;
     align-items: center;
     cursor: pointer;
-  }
+}
 
-  .form-checkbox input:checked {
+.form-checkbox input:checked {
     background-color: #0066ff;
     border-color: #0066ff;
-  }
+}
 
-  .form-checkbox input:checked::after {
+.form-checkbox input:checked::after {
     content: '✓';
     color: white;
     font-size: 12px;
-  }
+}
 
-  .done-button-2 {
+.done-button-2 {
     width: 100%;
     padding: 14px;
     background-color: #0066ff;
@@ -1371,51 +1383,51 @@ pre {
     font-weight: 500;
     cursor: pointer;
     transition: background-color 0.2s;
-  }
+}
 
-  .done-button-2:hover {
+.done-button-2:hover {
     background-color: #0052cc;
-  }
+}
 
-  .close-button-2 {
+.close-button-2 {
     border: none;
     background: none;
     cursor: pointer;
     font-size: 20px;
     color: #666;
-  }
+}
 
-  .warning {
+.warning {
     display: flex;
     gap: 12px;
     padding: 12px;
     margin-bottom: 20px;
     background-color: #fff9e6;
     border-radius: 8px;
-  }
+}
 
-  .warning-icon {
+.warning-icon {
     color: #ffd700;
-  }
+}
 
-  .warning-text {
+.warning-text {
     font-size: 14px;
     color: #4a4a4a;
     margin: 0;
-  }
+}
 
-  .form-group {
+.form-group {
     margin-bottom: 16px;
-  }
+}
 
-  .form-label {
+.form-label {
     display: block;
     font-size: 14px;
     color: #666;
     margin-bottom: 8px;
-  }
+}
 
-  .form-select {
+.form-select {
     width: 100%;
     padding: 12px;
     border: 1px solid #ddd;
@@ -1424,9 +1436,9 @@ pre {
     color: #333;
     background-color: white;
     cursor: pointer;
-  }
+}
 
-  .save-button {
+.save-button {
     width: 100%;
     padding: 14px;
     background-color: #0066ff;
@@ -1437,77 +1449,186 @@ pre {
     font-weight: 500;
     cursor: pointer;
     transition: background-color 0.2s;
-  }
+}
 
-  .save-button:hover {
+.save-button:hover {
     background-color: #0052cc;
-  }
+}
 
 
-  /* modal-3 */
-  .modal-3-container{
+/* modal-3 */
+
+.modal-3-container {
     position: relative;
-  }
-  .modal-3 {
-      display: none;
-      background: white;
-      position: fixed;
-      margin-left: 790px;
+}
+
+.modal-3 {
+    display: none;
+    background: white;
+    position: fixed;
+    margin-left: 790px;
     border-radius: 12px;
     padding: 24px;
     width: 90%;
     max-width: 400px;
     box-shadow: 4px 5px 4px 6px rgba(0, 0, 0, 0.1);
-  }
+}
 
-  .modal-header-3 {
+.modal-header-3 {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 20px;
-  }
+}
 
-  .modal-title-3 {
+.modal-title-3 {
     font-size: 18px;
     font-weight: 600;
     color: #1a1a1a;
-  }
+}
 
-  .close-button {
+.close-button {
     border: none;
     background: none;
     cursor: pointer;
     font-size: 20px;
     color: #666;
-  }
+}
 
-  /* // */
-  .share-card {
+
+/* // */
+
+
+/*  */
+
+
+/* modal-4  */
+
+.modal-4 {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-4-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+}
+
+.close-button-4 {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close-button-4:hover,
+.close-button-4:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.slider {
+    width: 100%;
+    height: 400px;
+    position: relative;
+    overflow: hidden;
+}
+
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.slide.active {
+    opacity: 1;
+}
+
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    padding: 10px;
+}
+
+.controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.counter {
+    font-weight: bold;
+}
+
+.modal-4-button button {
+    margin-left: 10px;
+}
+
+
+/*  */
+
+.share-card {
     display: flex;
     height: 200px;
     margin: 10px;
-    border: 1px solid #ddd; /* Light border for the card */
-    border-radius: 10px; /* Rounded corners */
-    overflow: hidden; /* Ensure nothing overflows */
-    max-width: 600px; /* Set max width for the card */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Light shadow for the card */
+    border: 1px solid #ddd;
+    /* Light border for the card */
+    border-radius: 10px;
+    /* Rounded corners */
+    overflow: hidden;
+    /* Ensure nothing overflows */
+    max-width: 600px;
+    /* Set max width for the card */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* Light shadow for the card */
 }
 
 .share-photo {
-    flex: 1; /* Photo takes up half the card width */
+    flex: 1;
+    /* Photo takes up half the card width */
     max-width: 50%;
 }
 
 .share-photo img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Ensures the image covers the area without distortion */
+    object-fit: cover;
+    /* Ensures the image covers the area without distortion */
 }
 
 .share-text {
-    flex: 1; /* Text takes up the other half of the card */
-    padding: 20px; /* Space around the text */
-    background-color: #f9f9f9; /* Light background for text section */
+    flex: 1;
+    /* Text takes up the other half of the card */
+    padding: 20px;
+    /* Space around the text */
+    background-color: #f9f9f9;
+    /* Light background for text section */
 }
 
 .share-text h3 {
@@ -1518,12 +1639,14 @@ pre {
 
 .share-text p {
     font-size: 1rem;
-    color: #555; /* Slightly gray text color */
+    color: #555;
+    /* Slightly gray text color */
     margin-bottom: 20px;
 }
 
 .share-text button {
-    background-color: #007BFF; /* Blue button */
+    background-color: #007BFF;
+    /* Blue button */
     color: white;
     padding: 10px 15px;
     border: none;
@@ -1534,16 +1657,20 @@ pre {
 }
 
 .share-text button:hover {
-    background-color: #0056b3; /* Darker blue on hover */
+    background-color: #0056b3;
+    /* Darker blue on hover */
 }
+
+
 /* // */
-  .share-buttons {
+
+.share-buttons {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 16px;
-  }
+}
 
-  .share-button {
+.share-button {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -1553,24 +1680,24 @@ pre {
     border-radius: 8px;
     cursor: pointer;
     transition: background-color 0.2s;
-  }
+}
 
-  .share-button:hover {
+.share-button:hover {
     background-color: #e6e6e6;
-  }
+}
 
-  .share-button img {
+.share-button img {
     width: 32px;
     height: 32px;
     margin-bottom: 8px;
-  }
+}
 
-  .share-button span {
+.share-button span {
     font-size: 14px;
     color: #4a4a4a;
-  }
+}
 
-  .copy-link {
+.copy-link {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -1580,24 +1707,24 @@ pre {
     /* margin-top: 16px; */
     cursor: pointer;
     transition: background-color 0.2s;
-  }
+}
 
-  .copy-link:hover {
+.copy-link:hover {
     background-color: #e6e6e6;
-  }
+}
 
-  .copy-link span {
+.copy-link span {
     font-size: 14px;
     color: #4a4a4a;
-  }
+}
 
-  .copy-link button {
+.copy-link button {
     border: none;
     background: none;
     cursor: pointer;
     font-size: 16px;
     color: #666;
-  }
+}
 
 
 /* responsive code */
