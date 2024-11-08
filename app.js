@@ -248,50 +248,80 @@ document.addEventListener('DOMContentLoaded', function () {
 
 // gallery responsive
 document.addEventListener('DOMContentLoaded', () => {
-    const carousel = document.querySelector('.carousel');
+    const carousel = document.getElementById('carousel');
+    const slides = document.querySelectorAll('.slide-1');
     const prevButton = document.querySelector('.prev-button-1');
     const nextButton = document.querySelector('.next-button-1');
-    const slides = document.querySelectorAll('.slide-1');
-    const currentSlideSpan = document.getElementById('current-slide');
-    const totalSlidesSpan = document.getElementById('total-slides');
+    let currentIndex = 0;
 
-    let currentIndex = parseInt(localStorage.getItem('currentIndex')) || 0;
-    const totalSlides = slides.length;
-
-    totalSlidesSpan.textContent = totalSlides;
-
-    // Function to update the active slide
+    // Show the initial slide
     function showSlide(index) {
-        // Remove active class from all slides
-        slides.forEach((slide) => {
-            slide.classList.remove('active');
+        slides.forEach((slide, i) => {
+            slide.style.display = i === index ? 'block' : 'none';
         });
-
-        // Add active class to the current slide
-        slides[index].classList.add('active');
-
-        // Move the slider
-        const slider = document.querySelector('.slider-1');
-        slider.style.transform = `translateX(-${index * 100}%)`; // Slide the slider to the desired index
-
-        // Update the current slide number
-        currentSlideSpan.textContent = index + 1;
-        localStorage.setItem('currentIndex', index);
     }
 
-    prevButton.addEventListener('click', () => {
-        currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
-        showSlide(currentIndex);
-    });
-
-    nextButton.addEventListener('click', () => {
-        currentIndex = (currentIndex + 1) % totalSlides;
-        showSlide(currentIndex);
-    });
-
-    // Show the carousel and the initial slide
-    carousel.style.display = 'block';
+    // Initialize by showing the first slide
     showSlide(currentIndex);
+
+    // Navigate to the previous slide
+    prevButton.addEventListener('click', () => {
+        currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+        showSlide(currentIndex);
+    });
+
+    // Navigate to the next slide
+    nextButton.addEventListener('click', () => {
+        currentIndex = (currentIndex + 1) % slides.length;
+        showSlide(currentIndex);
+    });
 });
+
+// document.addEventListener('DOMContentLoaded', () => {
+//     const carousel = document.querySelector('.carousel');
+//     const prevButton = document.querySelector('.prev-button-1');
+//     const nextButton = document.querySelector('.next-button-1');
+//     const slides = document.querySelectorAll('.slide-1');
+//     const currentSlideSpan = document.getElementById('current-slide');
+//     const totalSlidesSpan = document.getElementById('total-slides');
+
+//     let currentIndex = parseInt(localStorage.getItem('currentIndex')) || 0;
+//     const totalSlides = slides.length;
+
+//     totalSlidesSpan.textContent = totalSlides;
+
+//     // Function to update the active slide
+//     function showSlide(index) {
+//         // Remove active class from all slides
+//         slides.forEach((slide) => {
+//             slide.classList.remove('active');
+//         });
+
+//         // Add active class to the current slide
+//         slides[index].classList.add('active');
+
+//         // Move the slider
+//         const slider = document.querySelector('.slider-1');
+//         slider.style.transform = `translateX(-${index * 100}%)`; // Slide the slider to the desired index
+
+//         // Update the current slide number
+//         currentSlideSpan.textContent = index + 1;
+//         localStorage.setItem('currentIndex', index);
+//     }
+
+//     prevButton.addEventListener('click', () => {
+//         currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+//         showSlide(currentIndex);
+//     });
+
+//     nextButton.addEventListener('click', () => {
+//         currentIndex = (currentIndex + 1) % totalSlides;
+//         showSlide(currentIndex);
+//     });
+
+//     // Show the carousel and the initial slide
+//     carousel.style.display = 'block';
+//     showSlide(currentIndex);
+// });
 
 
