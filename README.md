@@ -1,0 +1,1 @@
+This project is an extension of assignment 1, where the foundational structure was created using HTML and CSS. In assignment 2, JavaScript was integrated to add interactive elements, enhancing the overall user experience. The site now includes some dynamic features and responsive design adjustments. Technologies used include HTML5, CSS3, and JavaScript.
