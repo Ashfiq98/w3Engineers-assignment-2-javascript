@@ -190,8 +190,8 @@ pre {
     /* Space between the images */
     /* position: relative; */
 }
-.carousel{
-    display: none;
+#carousel{
+    display: none !important;
 }
 .four-photos-section img {
     width: 100%;
@@ -1483,6 +1483,7 @@ pre {
     color: #333;
     background-color: white;
     cursor: pointer;
+    margin-bottom: 10px;
 }
 
 .save-button {
@@ -1816,7 +1817,7 @@ pre {
 @media (max-width: 1024px) {
     .nav-content {
         display: flex;
-        z-index: 999;
+        z-index: 9999;
         justify-content: space-between;
         align-items: center;
     }
@@ -1878,6 +1879,9 @@ pre {
 
 @media (max-width: 1024px) {
     /* carousel start */
+    #carousel{
+        display: block !important;
+    }
     .carousel {
         display: block;
         position: relative;

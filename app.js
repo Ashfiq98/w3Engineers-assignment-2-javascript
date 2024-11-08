@@ -141,7 +141,7 @@ document.querySelector('.icon-btn-share').addEventListener('click', () => {
 
     document.querySelector('.copy-link').addEventListener('click', () => {
         // Add copy to clipboard functionality here
-        const vacationUrl = "https://example.com/juneau-vacation-home";
+        const vacationUrl = "https://w3engineers.com/";
         const tempInput = document.createElement('textarea');
         tempInput.value = vacationUrl;
         document.body.appendChild(tempInput);
@@ -227,19 +227,28 @@ document.addEventListener('DOMContentLoaded', () => {
 // responsive navbar
 // Wait until the DOM content is fully loaded
 document.addEventListener('DOMContentLoaded', function () {
+    const  singlePhotoSection=  document.querySelector('.single-photo-section');
     const menuIcon = document.querySelector('.menu-icon');
     const navLinks = document.querySelector('.nav-links');
-
+     const firstHeader = document.querySelector('.first-header');
     // Add an event listener for when the hamburger icon is clicked
     menuIcon.addEventListener('click', function () {
         // Toggle the 'active' class on the nav-links
         navLinks.classList.toggle('active');
+        if(singlePhotoSection.style.display=='none'){
+            singlePhotoSection.style.display = 'block';
+            firstHeader.style.display = 'block';
+        }
+        else{
+        singlePhotoSection.style.display = 'none';
+        firstHeader.style.display = 'none';
+    }
     });
 });
 
 // gallery responsive
 document.addEventListener('DOMContentLoaded', () => {
-    const carousel = document.getElementById('carousel');
+    const carousel = document.querySelector('.carousel');
     const prevButton = document.querySelector('.prev-button-1');
     const nextButton = document.querySelector('.next-button-1');
     const slides = document.querySelectorAll('.slide-1');
@@ -286,35 +295,3 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-
-// document.addEventListener("DOMContentLoaded", function () {
-//     const slides = document.querySelectorAll(".slide-1");
-//     const prevButton = document.querySelector(".prev-button-1");
-//     const nextButton = document.querySelector(".next-button-1");
-//     const slider = document.querySelector(".slider-1");
-
-//     let currentIndex = parseInt(localStorage.getItem('carouselIndex')) || 0;
-//     const totalSlides = slides.length;
-
-//     // Update the carousel position based on the current index
-//     function updateCarousel() {
-//         const offset = -currentIndex * 100; // Move the slides based on the current index
-//         slider.style.transform = `translateX(${offset}%)`;
-//         localStorage.setItem('carouselIndex', currentIndex);
-//     }
-
-//     // Show next slide
-//     nextButton.addEventListener("click", function () {
-//         currentIndex = (currentIndex + 1) % totalSlides; // Loop back to first slide after last slide
-//         updateCarousel();
-//     });
-
-//     // Show previous slide
-//     prevButton.addEventListener("click", function () {
-//         currentIndex = (currentIndex - 1 + totalSlides) % totalSlides; // Loop back to last slide after first slide
-//         updateCarousel();
-//     });
-
-//     // Initialize carousel on page load
-//     updateCarousel();
-// });
