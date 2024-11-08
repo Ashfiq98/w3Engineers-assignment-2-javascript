@@ -17,7 +17,7 @@
         <div class="nav-content">
             <div class="nav-links">
                 <a href="#" class="home-link">
-                    <i class="fa-solid fa-globe"></i>
+                    <i class="fa-solid fa-globe globe-icon"></i>
                     <span class="region-text">United States</span>
                 </a>
                 <!-- modal 1 -->
@@ -80,7 +80,8 @@
             </div>
             <div class="right">
                 <button class="icon-btn icon-btn-share"><i class="fa-solid fa-arrow-up-from-bracket"style="color:#007BFF"></i>&nbsp; Share</button>
-                <button class="icon-btn icon-btn-save"><i class="fa fa-heart fill-love" aria-hidden="true" style="color:red; font-size: 20px;display: none;"></i>
+                <button class="icon-btn icon-btn-save">
+                                         <i class="fa fa-heart fill-love" aria-hidden="true" style="color:red; font-size: 20px;display: none;"></i>
                                          <i class="fa-regular fa-heart empty-love" style="color:red; font-size: 20px;"></i>&nbsp; Save</button>
 
             </div>
@@ -136,56 +137,126 @@
     <div class="container">
         <div class="main-container">
             <!-- Section with one large photo -->
-            <div class="single-photo-section">
-                <img src="./resources/header-1.jpg" alt="Single Photo" />
+             
+            <div class="single-photo-section ">
+                <div id="carousel" class="carousel">
+                <!-- carousel -->
+                    <div class="carousel-content">
+                        <!-- Slider with controls inside -->
+                        <div class="slider-1">
+                            <div class="slide-1 active">
+                                <img src="./resources/header-1.jpg" alt="Image 1">
+                            </div>
+                            <div class="slide-1">
+                                <img src="./resources/header-4.jpg" alt="Image 2">
+                            </div>
+                            <div class="slide-1">
+                                <img src="./resources/header-3.jpg" alt="Image 3">
+                            </div>
+                            <div class="slide-1">
+                                <img src="./resources/header-7.jpg" alt="Image 4">
+                            </div>
+                            <div class="slide-1">
+                                <img src="./resources/header-8.jpg" alt="Image 5">
+                            </div>
+                
+                            <!-- Controls with left and right arrows within the slider -->
+                            <div class="controls-1">
+                                <button class="prev-button-1"><i class="fa-solid fa-arrow-left" style="color: white;"></i></button>
+                                <button class="next-button-1"><i class="fa-solid fa-arrow-right" style="color: white;"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                 <!-- carousel -end  -->
+                <img class="single-img" src="./resources/header-1.jpg" class="single-img" alt="Single Photo" />
             </div>
 
             <!-- Section with four smaller photos arranged horizontally -->
             <div class="four-photos-section">
-                <img src="./resources/header-2.jpeg" alt="Photo 1" />
+                <img src="./resources/header-4.jpg" alt="Photo 1" />
                 <img src="./resources/header-3.jpg" alt="Photo 2" />
-                <img src="./resources/header-6.jpeg" alt="Photo 3" />
-                <img class="fourth-photo" src="./resources/header-5.jpg" alt="Photo 4" />
+                <img src="./resources/header-7.jpg" alt="Photo 3" />
+                <img class="fourth-photo blurred" src="./resources/header-8.jpg" alt="Photo 4" />
                 <button class="more-image">30+ <i class="fa-regular fa-images more-image-icon"></i></button>
             </div>
 
             <!-- modal-4 -->
-            <div id="modal-4" class="modal-4">
+            <!-- <div id="modal-4" class="modal-4">
                 <div class="modal-4-content">
                     <span class="close-button-4">&times;</span>
                     <div class="slider">
                         <div class="slide">
-                            <img src="./resources/header-8.jpg" alt="Image 1">
-                            <div class="caption">
-                                <h3>Juneau Vacation Rental</h3>
-                                <p>2BR | 1BA | 1,116 Sq Ft | Stairs Required</p>
-                            </div>
+                            <img src="./resources/header-1.jpg" alt="Image 1">
+                        </div> 
+                        <div class="slide">
+                            <img src="./resources/header-4.jpg" alt="Image 1">
+                        </div>
+                        <div class="slide">
+                            <img src="./resources/header-3.jpg" alt="Image 1">
                         </div>
                         <div class="slide">
                             <img src="./resources/header-7.jpg" alt="Image 2">
-                            <div class="caption">
-                                <h3>Juneau Vacation Rental</h3>
-                                <p>2BR | 1BA | 1,116 Sq Ft | Stairs Required</p>
-                            </div>
                         </div>
                         <div class="slide">
-                            <img src="./resources/header-5.jpg" alt="Image 3">
-                            <div class="caption">
-                                <h3>Juneau Vacation Rental</h3>
-                                <p>2BR | 1BA | 1,116 Sq Ft | Stairs Required</p>
-                            </div>
+                            <img src="./resources/header-8.jpg" alt="Image 3">
+                        </div>
+            
+                        
+                        <div class="caption">
+                            <h3>Juneau Vacation Rental</h3>
+                            <p>2BR | 1BA | 1,116 Sq Ft | Stairs Required</p>
                         </div>
                     </div>
                     <div class="controls">
-                        <div class="counter">1/31</div>
+                        <div class="counter">1/5</div>
                         <div class="modal-4-button">
                             <button class="prev-button">Previous</button>
                             <button class="next-button">Next</button>
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
+            <div id="modal-4" class="modal-4">
+                <div class="modal-4-content">
+                    <span class="close-button-4">&times;</span>
+                    
+                    <!-- Slider with controls inside -->
+                    <div class="slider">
+                        <div class="slide">
+                            <img src="./resources/header-1.jpg" alt="Image 1">
+                        </div> 
+                        <div class="slide">
+                            <img src="./resources/header-4.jpg" alt="Image 1">
+                        </div>
+                        <div class="slide">
+                            <img src="./resources/header-3.jpg" alt="Image 1">
+                        </div>
+                        <div class="slide">
+                            <img src="./resources/header-7.jpg" alt="Image 2">
+                        </div>
+                        <div class="slide">
+                            <img src="./resources/header-8.jpg" alt="Image 3">
+                        </div>
+            
+                        <!-- Controls with left and right arrows within slider -->
+                        <div class="controls">
+                            <button class="prev-button"><i class="fa-solid fa-arrow-left" style="color: white;"></i></button>
+                            <button class="next-button"><i class="fa-solid fa-arrow-right" style="color: white;"></i></button>
+                        </div>
+                    </div>
+            
+                    <!-- Caption section outside the slider div -->
+                    <div class="caption">
+                        <div class="counter"><span id="current-slide">1</span> / <span id="total-slides">5</span></div>
+                        <h3>Juneau Vacation Rental</h3>
+                        <p>2BR | 1BA | 1,116 Sq Ft | Stairs Required</p>
 
+                    </div>
+                </div>
+            </div>
+            
         </div>
 
     </div>
@@ -553,7 +624,7 @@ Evolve makes it easy to find and book properties you'll never want to leave. You
         </div>
     </div>
     <!-- questin card -->
-    <div class="container">
+    <div class="container question-card-container">
         <div class="question-card">
             <div class="card-header">
                 <h2 class="card-title">Have a question?</h2>

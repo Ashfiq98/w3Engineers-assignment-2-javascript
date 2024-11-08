@@ -4,88 +4,68 @@ document.querySelector('.home-link').addEventListener('click', (e) => {
     e.preventDefault();
 
     const modal = document.querySelector('.modal-1');
-    const body = document.querySelector('body');
     modal.style.display = 'block';
-
 
     const regionSelect = document.getElementById('region');
     const currencySelect = document.getElementById('currency');
     currencySelect.disabled = true;
-
+    
+    // Retrieve saved region and currency from localStorage
+    const savedRegion = localStorage.getItem('selectedRegion');
+    const savedCurrency = localStorage.getItem('selectedCurrency');
+    regionSelect.value = savedRegion ? savedRegion : 'US';  // Set default to 'US' if no saved region
+    if (savedRegion) regionSelect.value = savedRegion;
+    if (savedCurrency) currencySelect.value = savedCurrency;
 
     // Function to update currency based on selected region
     function updateCurrency() {
         const selectedRegion = regionSelect.value;
+        let currency;
 
-        // Update currency based on selected region
         switch (selectedRegion) {
             case 'US':
-                currencySelect.value = 'USD';
-
-                // United States -> USD
+                currency = 'USD';
                 break;
             case 'ES':
-                currencySelect.value = 'EURO'; // Spain, Germany -> EURO
-
-                break;
             case 'DE':
-                currencySelect.value = 'EURO'; // Spain, Germany -> EURO
-
+                currency = 'EURO';
                 break;
             case 'UK':
-                currencySelect.value = 'GBP'; // United Kingdom -> GBP
-
+                currency = 'GBP';
                 break;
             default:
-                currencySelect.value = 'USD'; // Reset currency if no region selected
+                currency = 'USD';
         }
+        currencySelect.value = currency;
+        localStorage.setItem('selectedRegion', selectedRegion);
+        localStorage.setItem('selectedCurrency', currency);
     }
 
-    // Add event listener to region select element
     regionSelect.addEventListener('change', updateCurrency);
-
-    // Call the function on page load to set the initial currency based on the default region
     updateCurrency();
 
-    // saveButton
-
+    // Save button event
     document.querySelector('.save-button').addEventListener('click', () => {
         const regionText = document.querySelector('.region-text');
-
         const successMessage = document.getElementById('success-message');
+
+        const selectedRegionName = regionSelect.options[regionSelect.selectedIndex].textContent;
         successMessage.style.display = 'block';
 
-        // Optionally hide it after a few seconds
         setTimeout(() => {
-            const regionSelect = document.getElementById('region');
-
-            const selectedOption = regionSelect.options[regionSelect.selectedIndex];
-
-            // Get the visible text of the selected option
-            const selectedRegionName = selectedOption.textContent;
             successMessage.style.display = 'none';
             modal.style.display = 'none';
-            console.log(selectedRegionName);
-            regionText.innerText = "";
             regionText.innerText = selectedRegionName;
-        }, 500); // Hides the message after 1 seconds
+            localStorage.setItem('regionText', selectedRegionName);
+        }, 500);
     });
-
-
-
-
 
     document.querySelector('.close-button-1').addEventListener('click', () => {
         modal.style.display = 'none';
-        console.log('close');
     });
-    // Get the region and currency select elements
+});
 
-
-})
-
-// (work-2) icon button (save) 
-
+// (work-2) icon button (save)
 document.querySelector('.icon-btn-save').addEventListener('click', () => {
     const fillLove = document.querySelector('.fill-love');
     const emptyLove = document.querySelector('.empty-love');
@@ -93,20 +73,37 @@ document.querySelector('.icon-btn-save').addEventListener('click', () => {
     if (fillLove.style.display === 'block') {
         emptyLove.style.display = 'block';
         fillLove.style.display = 'none';
-
+        localStorage.setItem('isLoved', 'false');
     } else {
         emptyLove.style.display = 'none';
         fillLove.style.display = 'block';
+        localStorage.setItem('isLoved', 'true');
     }
-})
+});
 
-// (work-3) modal - 2
+// Retrieve saved love status
+if (localStorage.getItem('isLoved') === 'true') {
+    document.querySelector('.fill-love').style.display = 'block';
+    document.querySelector('.empty-love').style.display = 'none';
+} else {
+    document.querySelector('.fill-love').style.display = 'none';
+    document.querySelector('.empty-love').style.display = 'block';
+}
 
+// (work-3) modal - 2 (travelers)
 document.querySelector('.travelers-btn').addEventListener('click', (e) => {
     e.preventDefault();
 
     const modal = document.querySelector('.modal-2');
     modal.style.display = 'block';
+
+    const adultCount = document.querySelector('.adult-count');
+    const childCount = document.querySelector('.child-count');
+
+    // Load traveler counts from localStorage
+    adultCount.value = localStorage.getItem('adultCount') || 0;
+    childCount.value = localStorage.getItem('childCount') || 0;
+
     document.querySelectorAll('.form-input-group button').forEach(btn => {
         btn.addEventListener('click', (e) => {
             const input = e.target.parentNode.querySelector('input');
@@ -117,53 +114,27 @@ document.querySelector('.travelers-btn').addEventListener('click', (e) => {
                 value++;
             }
             input.value = value;
+
+            // Save to localStorage
+            localStorage.setItem(input.className, value);
         });
     });
 
-    // Add event listener for the checkbox
-    document.querySelector('.form-checkbox input').addEventListener('change', (e) => {
-        e.target.parentNode.classList.toggle('checked', e.target.checked);
-    });
-
-    // Add event listener for the Done button
+    // Done button
     document.querySelector('.done-button-2').addEventListener('click', () => {
-        const adults = document.querySelectorAll('.form-input-group')[0].querySelector('input').value;
-        const children = document.querySelectorAll('.form-input-group')[1].querySelector('input').value;
-        const pets = document.querySelector('.form-checkbox input').checked;
-        // alert(`Adults: ${adults}\nChildren: ${children}\nPets: ${pets}`);
+        const newlyAdded = parseInt(adultCount.value) + parseInt(childCount.value);
+        document.querySelector('.count-traveler').textContent = newlyAdded;
+        localStorage.setItem('totalTravelers', newlyAdded);
+        modal.style.display = 'none';
     });
 
-    // Add event listener for the close button
+    // Close button
     document.querySelector('.close-button-2').addEventListener('click', () => {
-        // Add close functionality here
-        // alert('Modal would close');
         modal.style.display = 'none';
-        console.log('close');
     });
-    // done button - 2
-
-    document.querySelector('.done-button-2').addEventListener('click', () => {
-        const adultCount = document.querySelector('.adult-count');
-        const childCount = document.querySelector('.child-count');
-        const adultCountNumber = parseInt(adultCount.value);
-        const childCountNumber = parseInt(childCount.value);
-        let newlyAdded = adultCountNumber + childCountNumber;
-        // console.log(adultCountNumber+childCountNumber);
-
-        const totalCount = document.querySelector('.count-traveler');
-        // let totalCountNumber = parseInt(totalCount.textContent);
-        // totalCountNumber+=newlyAdded;
-        totalCount.textContent = newlyAdded;
-
-        modal.style.display = 'none';
-        // console.log(typeof(newlyAdded));
-        // console.log(totalCountNumber)
-
-    })
 });
 
-// work(4) icon button (share)
-
+// icon button share
 document.querySelector('.icon-btn-share').addEventListener('click', () => {
     const modal = document.querySelector('.modal-3');
     modal.style.display = 'block';
@@ -188,58 +159,162 @@ document.querySelector('.icon-btn-share').addEventListener('click', () => {
     // Add click event listener for the close button
     document.querySelector('.close-button').addEventListener('click', () => {
         // Add close functionality here
-        alert('Modal would close');
+        // alert('Modal would close');
         modal.style.display = 'none';
     });
 
 })
 
-// work (5) modal-4 Gallery button
-
+// (work-5) modal-4 Gallery button
 document.querySelector('.more-image').addEventListener('click', () => {
     const modal = document.getElementById('modal-4');
     const closeButton = document.querySelector('.close-button-4');
     const slides = document.querySelectorAll('.slide');
     const prevButton = document.querySelector('.prev-button');
     const nextButton = document.querySelector('.next-button');
-    const counterElement = document.querySelector('.counter');
+    const currentSlideSpan = document.getElementById('current-slide');
+    const totalSlidesSpan = document.getElementById('total-slides');
 
-    let currentIndex = 0;
+    let currentIndex = parseInt(localStorage.getItem('currentIndex')) || 0;
+    const totalSlides = slides.length;
 
-    function showModal() {
-        modal.style.display = 'block';
-        showSlide(currentIndex);
-    }
-
-    function hideModal() {
-        modal.style.display = 'none';
-    }
+    totalSlidesSpan.textContent = totalSlides;
 
     function showSlide(index) {
         slides.forEach((slide, i) => {
             slide.classList.toggle('active', i === index);
         });
-        updateCounter();
+        currentSlideSpan.textContent = index + 1;
+        localStorage.setItem('currentIndex', index);
     }
 
-    function previousSlide() {
-        currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+    prevButton.addEventListener('click', () => {
+        currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
         showSlide(currentIndex);
-    }
+    });
 
-    function nextSlide() {
-        currentIndex = (currentIndex + 1) % slides.length;
+    nextButton.addEventListener('click', () => {
+        currentIndex = (currentIndex + 1) % totalSlides;
         showSlide(currentIndex);
-    }
+    });
 
-    function updateCounter() {
-        counterElement.textContent = `${currentIndex + 1}/${slides.length}`;
-    }
+    closeButton.addEventListener('click', () => {
+        modal.style.display = 'none';
+    });
 
-    closeButton.addEventListener('click', hideModal);
-    prevButton.addEventListener('click', previousSlide);
-    nextButton.addEventListener('click', nextSlide);
-
-    // Open the modal when the page loads
-    showModal();
+    // Open modal and show initial slide
+    modal.style.display = 'block';
+    showSlide(currentIndex);
 });
+
+// Load traveler and region settings
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelector('.region-text').innerText = localStorage.getItem('regionText') || '';
+    document.querySelector('.count-traveler').textContent = localStorage.getItem('totalTravelers') || 0;
+});
+// Load traveler and region settings on page load
+document.addEventListener('DOMContentLoaded', () => {
+    const regionTextElement = document.querySelector('.region-text');
+    const savedRegionText = localStorage.getItem('regionText');
+    const defaultRegionText = "United States";
+
+    // Set default region text to 'United States' if none is saved
+    regionTextElement.innerText = savedRegionText || defaultRegionText;
+
+    document.querySelector('.count-traveler').textContent = localStorage.getItem('totalTravelers') || 0;
+});
+
+// responsive navbar
+// Wait until the DOM content is fully loaded
+document.addEventListener('DOMContentLoaded', function () {
+    const menuIcon = document.querySelector('.menu-icon');
+    const navLinks = document.querySelector('.nav-links');
+
+    // Add an event listener for when the hamburger icon is clicked
+    menuIcon.addEventListener('click', function () {
+        // Toggle the 'active' class on the nav-links
+        navLinks.classList.toggle('active');
+    });
+});
+
+// gallery responsive
+document.addEventListener('DOMContentLoaded', () => {
+    const carousel = document.getElementById('carousel');
+    const prevButton = document.querySelector('.prev-button-1');
+    const nextButton = document.querySelector('.next-button-1');
+    const slides = document.querySelectorAll('.slide-1');
+    const currentSlideSpan = document.getElementById('current-slide');
+    const totalSlidesSpan = document.getElementById('total-slides');
+
+    let currentIndex = parseInt(localStorage.getItem('currentIndex')) || 0;
+    const totalSlides = slides.length;
+
+    totalSlidesSpan.textContent = totalSlides;
+
+    // Function to update the active slide
+    function showSlide(index) {
+        // Remove active class from all slides
+        slides.forEach((slide) => {
+            slide.classList.remove('active');
+        });
+
+        // Add active class to the current slide
+        slides[index].classList.add('active');
+
+        // Move the slider
+        const slider = document.querySelector('.slider-1');
+        slider.style.transform = `translateX(-${index * 100}%)`; // Slide the slider to the desired index
+
+        // Update the current slide number
+        currentSlideSpan.textContent = index + 1;
+        localStorage.setItem('currentIndex', index);
+    }
+
+    prevButton.addEventListener('click', () => {
+        currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+        showSlide(currentIndex);
+    });
+
+    nextButton.addEventListener('click', () => {
+        currentIndex = (currentIndex + 1) % totalSlides;
+        showSlide(currentIndex);
+    });
+
+    // Show the carousel and the initial slide
+    carousel.style.display = 'block';
+    showSlide(currentIndex);
+});
+
+
+
+// document.addEventListener("DOMContentLoaded", function () {
+//     const slides = document.querySelectorAll(".slide-1");
+//     const prevButton = document.querySelector(".prev-button-1");
+//     const nextButton = document.querySelector(".next-button-1");
+//     const slider = document.querySelector(".slider-1");
+
+//     let currentIndex = parseInt(localStorage.getItem('carouselIndex')) || 0;
+//     const totalSlides = slides.length;
+
+//     // Update the carousel position based on the current index
+//     function updateCarousel() {
+//         const offset = -currentIndex * 100; // Move the slides based on the current index
+//         slider.style.transform = `translateX(${offset}%)`;
+//         localStorage.setItem('carouselIndex', currentIndex);
+//     }
+
+//     // Show next slide
+//     nextButton.addEventListener("click", function () {
+//         currentIndex = (currentIndex + 1) % totalSlides; // Loop back to first slide after last slide
+//         updateCarousel();
+//     });
+
+//     // Show previous slide
+//     prevButton.addEventListener("click", function () {
+//         currentIndex = (currentIndex - 1 + totalSlides) % totalSlides; // Loop back to last slide after first slide
+//         updateCarousel();
+//     });
+
+//     // Initialize carousel on page load
+//     updateCarousel();
+// });
